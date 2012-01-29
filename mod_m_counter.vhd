@@ -28,7 +28,9 @@ begin
 	end process reg;
 	
 	--Next state logic
-	r_next <= (others => '0') when r_reg=(M-1) else r_reg+1;	
+	r_next <= (others => '0') when r_reg=(M-1) else r_reg+1;
+	
+	tick <= '1' when r_reg=(M-1) else '0';
 
 end arch;
 
