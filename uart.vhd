@@ -60,6 +60,30 @@ begin
 			     tx_done_tick => tx_done_tick,
 			     tx           => tx);
 			     
+	fifo_rx_unit : entity work.fifo
+		generic map(B => DBIT,
+			        W => FIFO_W)
+		port map(clk    => clk,
+			     rst    => rst,
+			     rd     => rd_uart,
+			     wr     => rx_done_tick,
+			     w_data => rx_data_out,
+			     empty  => rx_empty,
+			     full   => open,
+			     r_data => r_data);
+			     
+	fifo_tx_unit : entity work.fifo
+		generic map(B => DBIT,
+			        W => FIFO_W)
+		port map(clk    => clk,
+			     rst    => rst,
+			     rd     => tx_done_tick,
+			     wr     => wr_uart,
+			     w_data => w_data,
+			     empty  => tx_empty,
+			     full   => tx_full,
+			     r_data => tx_fifo_out);
+			     
 	tx_fifo_not_empty <= not tx_empty;
 
 end arch;
