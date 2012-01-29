@@ -1,0 +1,8 @@
+
+.project
+.settings/org.eclipse.core.resources.prefs
+_xmsgs/pn_parser.xmsgs
+iseconfig/uart_rx.xreport
+UART.gise
+UART.xise
+uart_rx_summary.html
