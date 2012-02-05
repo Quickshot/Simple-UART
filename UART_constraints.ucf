@@ -1,12 +1,10 @@
 NET "clk" IOSTANDARD = LVCMOS33;
 NET "clk" LOC = E12;
 
-# PlanAhead Generated physical constraints 
-NET "rst" LOC = T15;
+NET "rst" LOC = T14;
 NET "rx" LOC = AA21;
 NET "tx" LOC = AB21;
 
-# PlanAhead Generated IO constraints 
 NET "rst" IOSTANDARD = LVCMOS33;
 NET "rx" IOSTANDARD = LVCMOS33;
 NET "tx" IOSTANDARD = LVCMOS33;
@@ -14,5 +12,38 @@ NET "rx" DRIVE = 8;
 NET "tx" DRIVE = 8;
 NET "rst" PULLDOWN;
 #Created by Constraints Editor (xc3s700an-fgg484-4) - 2012/02/05
-NET "clk" TNM_NET = clk;
-TIMESPEC TS_clk = PERIOD "clk" 20 ns HIGH 50%;
+NET "clk" TNM_NET = "clk";
+TIMESPEC TS_clk = PERIOD "clk" 20 ns HIGH 50 %;
+
+# PlanAhead Generated physical constraints 
+
+NET "btn" LOC = T15;
+NET "led[0]" LOC = R20;
+NET "led[1]" LOC = T19;
+NET "led[2]" LOC = U20;
+NET "led[3]" LOC = U19;
+NET "led[4]" LOC = V19;
+NET "led[5]" LOC = V20;
+NET "led[6]" LOC = Y22;
+NET "led[7]" LOC = W21;
+
+# PlanAhead Generated IO constraints 
+
+NET "btn" IOSTANDARD = LVCMOS33;
+NET "led[0]" IOSTANDARD = LVCMOS33;
+NET "led[1]" IOSTANDARD = LVCMOS33;
+NET "led[2]" IOSTANDARD = LVCMOS33;
+NET "led[3]" IOSTANDARD = LVCMOS33;
+NET "led[4]" IOSTANDARD = LVCMOS33;
+NET "led[5]" IOSTANDARD = LVCMOS33;
+NET "led[6]" IOSTANDARD = LVCMOS33;
+NET "led[7]" IOSTANDARD = LVCMOS33;
+NET "led[0]" DRIVE = 8;
+NET "led[1]" DRIVE = 8;
+NET "led[2]" DRIVE = 8;
+NET "led[3]" DRIVE = 8;
+NET "led[4]" DRIVE = 8;
+NET "led[5]" DRIVE = 8;
+NET "led[6]" DRIVE = 8;
+NET "led[7]" DRIVE = 8;
+NET "btn" PULLDOWN;
