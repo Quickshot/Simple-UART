@@ -26,20 +26,22 @@ architecture arch of uart_tx is
 	signal tx_reg, tx_next: std_logic;
 begin
 
-	state_and_data:process (clk, rst) is
-	begin
-		if rst = '1' then
-			state_reg <= idle;
-			s_reg <= (others => '0');
-			n_reg <= (others => '0');
-			b_reg <= (others => '0');
-			tx_reg <= '1';	-- Idle => output high
-		elsif rising_edge(clk) then
-			state_reg <= state_next;
-			s_reg <= s_next;
-			n_reg <= n_next;
-			b_reg <= b_next;
-			tx_reg <= tx_next;
+	state_and_data:process (clk) is
+	begin	
+		if rising_edge(clk) then
+			if rst = '1' then
+				state_reg <= idle;
+				s_reg <= (others => '0');
+				n_reg <= (others => '0');
+				b_reg <= (others => '0');
+				tx_reg <= '1';	-- Idle => output high
+			else
+				state_reg <= state_next;
+				s_reg <= s_next;
+				n_reg <= n_next;
+				b_reg <= b_next;
+				tx_reg <= tx_next;
+			end if;
 		end if;
 	end process state_and_data;
 	

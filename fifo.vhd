@@ -27,13 +27,15 @@ architecture arch of fifo is
 	signal wr_en : std_logic;
 begin
 
-	reg:process (clk, rst) is
+	reg:process (clk) is
 	begin
-		if rst = '1' then
-			array_reg <= (others => (others => '0'));
-		elsif rising_edge(clk) then
-			if wr_en = '1' then
-				array_reg(TO_INTEGER(unsigned(w_ptr_reg))) <= w_data;
+		if rising_edge(clk) then
+			if rst = '1' then
+				array_reg <= (others => (others => '0'));
+			else
+				if wr_en = '1' then
+					array_reg(TO_INTEGER(unsigned(w_ptr_reg))) <= w_data;
+				end if;
 			end if;
 		end if;
 	end process reg;
@@ -43,18 +45,20 @@ begin
 	-- Write enabled only when not full
 	wr_en <= wr and (not full_reg);
 	
-	wr_ponters:process (clk, rst) is
+	wr_ponters:process (clk) is
 	begin
-		if rst = '1' then
-			w_ptr_reg <= (others => '0');
-			r_ptr_reg <= (others => '0');
-			full_reg <= '0';
-			empty_reg <= '1';
-		elsif rising_edge(clk) then
-			w_ptr_reg <= w_ptr_next;
-			r_ptr_reg <= r_ptr_next;
-			full_reg <= full_next;
-			empty_reg <= empty_next;
+		if rising_edge(clk) then
+			if rst = '1' then
+				w_ptr_reg <= (others => '0');
+				r_ptr_reg <= (others => '0');
+				full_reg <= '0';
+				empty_reg <= '1';
+			else
+				w_ptr_reg <= w_ptr_next;
+				r_ptr_reg <= r_ptr_next;
+				full_reg <= full_next;
+				empty_reg <= empty_next;
+			end if;
 		end if;
 	end process wr_ponters;
 	

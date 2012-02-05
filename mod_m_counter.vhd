@@ -18,12 +18,14 @@ architecture arch of mod_m_counter is
 	signal r_next : unsigned(N-1 downto 0);
 	
 begin
-	reg:process (clk, reset) is
+	reg:process (clk) is
 	begin
-		if reset = '1' then
-			r_reg <= (others => '0');
-		elsif rising_edge(clk) then
-			r_reg <= r_next;
+		if rising_edge(clk) then
+			if reset = '1' then
+				r_reg <= (others => '0');
+			else
+				r_reg <= r_next;
+			end if;
 		end if;
 	end process reg;
 	
