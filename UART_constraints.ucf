@@ -1,0 +1,18 @@
+NET "clk" IOSTANDARD = LVCMOS33;
+NET "clk" LOC = E12;
+
+# PlanAhead Generated physical constraints 
+NET "rst" LOC = T15;
+NET "rx" LOC = AA21;
+NET "tx" LOC = AB21;
+
+# PlanAhead Generated IO constraints 
+NET "rst" IOSTANDARD = LVCMOS33;
+NET "rx" IOSTANDARD = LVCMOS33;
+NET "tx" IOSTANDARD = LVCMOS33;
+NET "rx" DRIVE = 8;
+NET "tx" DRIVE = 8;
+NET "rst" PULLDOWN;
+#Created by Constraints Editor (xc3s700an-fgg484-4) - 2012/02/05
+NET "clk" TNM_NET = clk;
+TIMESPEC TS_clk = PERIOD "clk" 20 ns HIGH 50%;
